@@ -3,6 +3,11 @@ variable "container_name" {
   default = "ecsdemo-frontend"
 }
 
+variable "image" {
+  type    = string
+  default = "public.ecr.aws/aws-containers/ecsdemo-frontend:776fd50"
+}
+
 variable "container_port" {
   type    = number
   default = 3000
