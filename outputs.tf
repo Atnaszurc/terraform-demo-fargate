@@ -1,5 +1,5 @@
 output "load_balancer_dns_name" {
-  value = module.alb.dns_name
+  value = "http://${module.alb.dns_name}"
 
 }
 
