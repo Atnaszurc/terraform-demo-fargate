@@ -318,12 +318,14 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
 
-  name            = local.name
-  cidr            = local.vpc_cidr
-  enable_flow_log = var.enable_flow_log
-  azs             = local.azs
-  private_subnets = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 4, k)]
-  public_subnets  = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 8, k + 48)]
+  name                                 = local.name
+  cidr                                 = local.vpc_cidr
+  enable_flow_log                      = var.enable_flow_log
+  create_flow_log_cloudwatch_log_group = true
+  create_flow_log_cloudwatch_iam_role  = true
+  azs                                  = local.azs
+  private_subnets                      = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 4, k)]
+  public_subnets                       = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 8, k + 48)]
 
   enable_nat_gateway = true
   single_nat_gateway = true
