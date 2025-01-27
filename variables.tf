@@ -12,3 +12,8 @@ variable "enable_flow_log" {
   type    = bool
   default = true
 }
+
+variable "region" {
+  type    = string
+  default = "eu-west-1"
+}
